@@ -1,36 +1,90 @@
 import processing.core.PApplet;
 
+/**
+ * 
+ * This program draws a simple house
+ * @author: T. Guo
+ *
+ **/
+
+
 public class Sketch extends PApplet {
-	
-	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
+
   public void settings() {
-	// put your size call here
-    size(400, 400);
+    // set screen size
+    size(800, 600);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
   public void setup() {
-    background(210, 255, 173);
+    // set background to light blue
+    background(102, 217, 255);
   }
 
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
   public void draw() {
-	  
-	// sample code, delete this stuff
-    stroke(128);
-    line(150, 25, 270, 350);  
+    // house base
+    fill(255,255,204);
+    rect(width / 4, height / 2, width / 2, height / 2);
+    triangle(width / 4, height / 2, width / 2, height / 3, (float) (width * 0.75), height / 2);
+    
+    // grass
+    fill(51, 204, 51);
+    rect(0, (float) (height * (double) 29 / 30), width, height / 30);
+    
+    // door
+    fill(255, 204, 102);
+    rect((float) (width * 0.45), (float) (height * 0.75), width / 10, (float) (height * (double) 13 / 60));
 
-    stroke(255);
-    line(50, 125, 70, 50);  
+    // windows
+    fill (51, 204, 255);
+    rect((float) (width * 0.3125), (float) (height * (double) 7 / 12), width / 16, height / 12);
+    rect((float) (width * 0.625), (float) (height * (double) 7 / 12), width / 16, height / 12);
+    
+    // yellow (sun and doorknob)
+    fill(255, 255, 0);
+    ellipse(width / 8, height / 6, width / 8, height / 6);
+    ellipse((float) (width * 0.525), (float) (height * (double) 13 / 15), width / 80, height / 60);
+    
+    // window lines
+    line((float) (width * 0.34375), (float) (height * (double) 7 / 12), (float) (width * 0.34375), (float) (height * (double) 2 / 3));
+    line((float) (width * 0.3125), (float) (height * 0.625), (float) (width * 0.375), (float) (height * 0.625));
+    line((float) (width * 0.65625), (float) (height * (double) 7 / 12), (float) (width * 0.65625), (float) (height * (double) 2 / 3));
+    line((float) (width * 0.625), (float) (height * 0.625), (float) (width * 0.6875), (float) (height * 0.625));
+
+    // flower stems
+    stroke(51, 153, 51);
+    strokeWeight(width / 200);
+    line((float) (width * 0.3125), (float) (height * (double) 29 / 30), (float) (width * 0.3125), (float) (height * (double) 13 / 15));
+    line((float) (width * 0.40625), (float) (height * (double) 29 / 30), (float) (width * 0.40625), (float) (height * (double) 13 / 15));
+    line((float) (width * 0.59375), (float) (height * (double) 29 / 30), (float) (width * 0.59375), (float) (height * (double) 13 / 15));
+    line((float) (width * 0.6875), (float) (height * (double) 29 / 30), (float) (width * 0.6875), (float) (height * (double) 13 / 15));
+    
+     // flowers
+    stroke(0);
+    strokeWeight(0);
+
+    fill(255, 153, 0);
+    ellipse((float) (width * 0.3125), (float) (height * (double) 13 / 15), width / 16, height / 30);
+    ellipse((float) (width * 0.3125), (float) (height * (double) 13 / 15), width / 40, height / 12);
+    
+    ellipse((float) (width * 0.6875), (float) (height * (double) 13 / 15), width / 16, height / 30);
+    ellipse((float) (width * 0.6875), (float) (height * (double) 13 / 15), width / 40, height / 12);
+
+    fill(255, 102, 255);
+    ellipse((float) (width * 0.40625), (float) (height * (double) 13 / 15), width / 16, height / 30);
+    ellipse((float) (width * 0.40625), (float) (height * (double) 13 / 15), width / 40, height / 12);
+
+    ellipse((float) (width * 0.59375), (float) (height * (double) 13 / 15), width / 16, height / 30);
+    ellipse((float) (width * 0.59375), (float) (height * (double) 13 / 15), width / 40, height / 12);
+
+
+    // flower centers
+    strokeWeight(1);
+    fill(255, 255, 0);
+    ellipse((float) (width * 0.3125), (float) (height * (double) 13 / 15), width / 40, height / 30);
+    ellipse((float) (width * 0.40625), (float) (height * (double) 13 / 15), width / 40, height / 30);
+    ellipse((float) (width * 0.59375), (float) (height * (double) 13 / 15), width / 40, height / 30);
+    ellipse((float) (width * 0.6875), (float) (height * (double) 13 / 15), width / 40, height / 30);
+  
   }
   
-  // define other methods down here.
 }
