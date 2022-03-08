@@ -46,7 +46,7 @@ public class Sketch extends PApplet {
   // Generate an integer between -100 and 100 to shift the whole drawing horizontally;
   int intOffset = (int) (random(-100, 100));
 
-  
+
 
   public void draw() {
 
@@ -151,7 +151,7 @@ public class Sketch extends PApplet {
     if (isDisplayTime) {
       fill(255);
       textSize(20);
-      text(StrTime, width/80, height/20);
+      text(StrTime, width / 80, height / 20);
     }
   }
   
