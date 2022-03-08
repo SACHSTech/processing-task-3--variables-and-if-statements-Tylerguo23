@@ -25,16 +25,13 @@ public class Sketch extends PApplet {
   // Get current time
   int intHour = hour();
   int intMinute = minute();
+  String StrTime;
 
   // Convert current time to an integer between 0 and 360
   int intTime = (intHour * 60 + intMinute) / 4 ;
 
-  // Convert current time to a String
-  String StrTime = intHour + ":" + intMinute;
-
-
   // Generate a float between 0 and 360 and set isNight to false by default
-  float floatPos = random(0, 360);
+  int intPos = (int) random(0, 360);
   boolean isNight = false;
 
   // Declare an integer for the number of day/night cycles
@@ -50,13 +47,13 @@ public class Sketch extends PApplet {
 
   public void draw() {
 
-    // Check if the sun/moon's current floatPosition (from 0 to 360) is equal to what it should be at the current time and at least one cycle has passed
-    if (!( floatPos == intTime || ((floatPos + 180) == intTime && isNight)) || intCycles < 1) {
+    // Check if the sun/moon's current position (from 0 to 360) is equal to what it should be at the current time and at least one cycle has passed
+    if (!((intPos == intTime && !isNight || (intPos + 180) == intTime && isNight)) || intCycles < 1) {
       // Rotate the sun/moon 1 degree counterclockwise if not
-      floatPos++;
-      // Check if the sun/moon would go below the horizon, in which case change the day/night and set the sun/moon to the opfloatPosite side (also increase Cycle count)
-      if (floatPos < 90 || floatPos > 270) {
-        floatPos = 90;
+      intPos++;
+      // Check if the sun/moon would go below the horizon, in which case change the day/night and set the sun/moon to the opposite side (also increase Cycle count)
+      if (intPos < 90 || intPos > 270) {
+        intPos = 90;
         intCycles++;
         isNight = !isNight;
       }
@@ -78,7 +75,7 @@ public class Sketch extends PApplet {
     }
     
     // Draw the sun/moon in the sky using trig
-    float angle = floatPos + 90;
+    float angle = intPos + 90;
     float x = width / 2 - cos(radians(angle)) * width / 2;
     float y = height / 2 + sin(radians(angle)) * height / 2;
     ellipse(x, y, width / 8, height / 6);
@@ -147,6 +144,14 @@ public class Sketch extends PApplet {
     ellipse((float) (width * 0.59375) + intOffset, (float) (height * (double) 13 / 15), width / 40, height / 30);
     ellipse((float) (width * 0.6875) + intOffset, (float) (height * (double) 13 / 15), width / 40, height / 30);
   
+    // Convert current time to a String
+    if (intMinute < 10){
+      StrTime = intHour + ":0" + intMinute;
+    }
+    else {
+      StrTime = intHour + ":" + intMinute;
+    }
+
     // Time Display
     if (isDisplayTime) {
       fill(255);
